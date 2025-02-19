@@ -43,7 +43,6 @@ function Sidebar() {
             width: 250,
             boxSizing: "border-box",
             borderRight: "1px solid #ECF0EF",
-            
           },
         }}
         variant="temporary"
@@ -53,7 +52,7 @@ function Sidebar() {
           keepMounted: true, // Improve performance on mobile
         }}
       >
-        <Box sx={{ padding: "20px"  }} >
+        <Box sx={{ padding: "20px" }}>
           <Box
             sx={{
               display: "flex",
@@ -61,78 +60,152 @@ function Sidebar() {
               alignItems: "center",
             }}
           >
-            <img src="./images/logo.png" alt="logo" />
-            <Typography variant="h5">Pixal Commerce</Typography>
+            <img src="./images/logo.svg" alt="logo" />
           </Box>
-          <Divider />
           <Box sx={{ padding: "10px" }}>
             <Button
               variant="contained"
               sx={{
                 width: "100%",
-                justifyContent: "space-between",
+                color: "white",
                 marginTop: "20px",
-                color: "black",
-                backgroundColor: "#77E1C9", // Correct way to apply background color
+                backgroundColor: "primary",
+                display: "flex",
+                justifyContent: "center",
+                gap: "20px",
+                lineHeight: "40px",
                 "&:hover": {
-                  backgroundColor: "#66B8A5", // Optional: Hover effect
+                  backgroundColor: "black",
                 },
               }}
-              startIcon={<HomeIcon />}
-              endIcon={<ArrowForwardIosIcon />}
+              startIcon={<img src="./images/dash.svg" />}
             >
               Dashboard
             </Button>
 
             <List>
               {[
-                { text: "Products", icon: <img src="./images/prot.svg" alt="" /> },
-                { text: "Favorites", icon: <img src="./images/fav.svg" alt="" /> },
-                { text: "Inbox", icon: <img src="./images/inbox.svg" alt=""/> },
-                { text: "Order Lists", icon: <img src="./images/list.svg" alt="" /> },
-                { text: "Product Stock", icon: <img src="./images/pro.svg" alt="" /> },
+                {
+                  text: "Products",
+                  icon: <img src="./images/prot.svg" alt="" />,
+                },
+                {
+                  text: "Favorites",
+                  icon: <img src="./images/fav.svg" alt="" />,
+                },
+                {
+                  text: "Inbox",
+                  icon: <img src="./images/inbox.svg" alt="" />,
+                },
+                {
+                  text: "Order Lists",
+                  icon: <img src="./images/list.svg" alt="" />,
+                },
+                {
+                  text: "Product Stock",
+                  icon: <img src="./images/pro.svg" alt="" />,
+                },
               ].map((item, index) => (
-                <ListItem key={index}>
+                <ListItem
+                  key={index}
+                  sx={{
+                    "&:hover": {
+                      backgroundColor: "#4880FF",
+                      color: "white",
+                      borderRadius: "12px",
+                    },
+                  }}
+                >
                   <ListItemButton>
                     <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
+                    <ListItemText
+                      primary={item.text}
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: "14px",
+                        lineHeight: "19.1px",
+                        letterSpacing: "0.3px",
+                        margin: 0, // optional if you want to remove paragraph spacing
+                      }}
+                    />
                   </ListItemButton>
                 </ListItem>
               ))}
             </List>
-             <Divider inset />
-             <Box sx={{marginTop:"10px", ml:"10px"}}>
-             <Typography variant="p" color="#202224" sx={{opacity:'0.6' }}>Pages</Typography>
-             </Box>
+            <Divider inset />
+            <Box sx={{ marginTop: "10px", ml: "10px" }}>
+              <Typography variant="p" color="#202224" sx={{ opacity: "0.6" }}>
+                Pages
+              </Typography>
+            </Box>
             <List>
               {[
-                { text: "Pricing", icon: <img src="./images/pri.svg" alt="" /> },
-                { text: "Calender", icon: <img src="./images/cal.svg" alt="" /> },
+                {
+                  text: "Pricing",
+                  icon: <img src="./images/pri.svg" alt="" />,
+                },
+                {
+                  text: "Calender",
+                  icon: <img src="./images/cal.svg" alt="" />,
+                },
                 { text: "To Do", icon: <img src="./images/todo.svg" alt="" /> },
-                { text: "Contact", icon: <img src="./images/contact.svg" alt="" /> },
-                { text: "Invoice", icon: < img src="./images/invoice.svg" alt=""/> },
-                { text: "UI Elements", icon: <img src="./images/ui.svg"  alt=""/> },
-                { text: "Team", icon: <img src="./images/team.svg"  alt=""/> },
-                { text: "Table", icon: <img src="./images/table.svg"  alt=""/> },
+                {
+                  text: "Contact",
+                  icon: <img src="./images/contact.svg" alt="" />,
+                },
+                {
+                  text: "Invoice",
+                  icon: <img src="./images/invoice.svg" alt="" />,
+                },
+                {
+                  text: "UI Elements",
+                  icon: <img src="./images/ui.svg" alt="" />,
+                },
+                { text: "Team", icon: <img src="./images/team.svg" alt="" /> },
+                {
+                  text: "Table",
+                  icon: <img src="./images/table.svg" alt="" />,
+                },
               ].map((item, index) => (
                 <ListItem key={index}>
                   <ListItemButton>
                     <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
+                    <ListItemText
+                      primary={item.text}
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: "14px",
+                        lineHeight: "19.1px",
+                        letterSpacing: "0.3px",
+                        margin: 0, // optional if you want to remove paragraph spacing
+                      }}
+                    />
                   </ListItemButton>
                 </ListItem>
               ))}
             </List>
-             <Divider inset />
+            <Divider inset />
             <List>
               {[
-                { text: "Settings", icon: <img src="./images/setting.svg" alt="" /> },
+                {
+                  text: "Settings",
+                  icon: <img src="./images/setting.svg" alt="" />,
+                },
                 { text: "Logout", icon: <img src="./images/log.svg" alt="" /> },
               ].map((item, index) => (
                 <ListItem key={index}>
                   <ListItemButton>
                     <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
+                    <ListItemText
+                      primary={item.text}
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: "14px",
+                        lineHeight: "19.1px",
+                        letterSpacing: "0.3px",
+                        margin: 0, // optional if you want to remove paragraph spacing
+                      }}
+                    />
                   </ListItemButton>
                 </ListItem>
               ))}
@@ -144,7 +217,7 @@ function Sidebar() {
       {/* Sidebar Toggle Button on Mobile */}
       {isMobile && (
         <IconButton
-          sx={{ position: "absolute", top: 40, left: 20, zIndex: 1000 }}
+          sx={{ position: "absolute", top: 20, left: 5, zIndex: 1000 }}
           onClick={toggleDrawer}
         >
           <MenuIcon sx={{ width: "40px", height: "40px" }} />
@@ -153,93 +226,190 @@ function Sidebar() {
 
       {/* Full Sidebar for larger screens */}
       {!isMobile && (
-        <Box flex={1} borderRight="1px solid #ECF0EF" bgcolor="white">
+        <Box flex={1} bgcolor="white">
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               padding: "20px",
-              paddingBottom:"0",
-              paddingTop:"37px"
+              paddingBottom: "15px",
+              paddingTop: "37px",
             }}
           >
-            <img src="./images/logo.svg" alt="image" width="120px" height="27px"/>
+            <img
+              src="./images/logo.svg"
+              alt="image"
+              width="120px"
+              height="27px"
+            />
           </Box>
-          <Box sx={{ }}>
-            <Button
-              variant="contained"
+          <Box sx={{ width: "100%" }}>
+            <Box
               sx={{
-                width: "80%",
-                color: "white",
-                marginTop: "20px",
-                backgroundColor: "primary", 
-                display:"flex",
-                justifyContent:"center",
-                gap:"20px",
-                lineHeight:"40px",
-                "&:hover": {
-                  backgroundColor: "black",
-                }
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
-              startIcon={<img src="./images/dash.svg" />}
             >
-              Dashboard
-            </Button>
+              <Button
+                variant="contained"
+                sx={{
+                  width: "80%",
+                  color: "white",
+                  marginTop: "20px",
+                  backgroundColor: "primary",
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "20px",
+                  lineHeight: "40px",
+                  "&:hover": {
+                    backgroundColor: "black",
+                  },
+                }}
+                startIcon={<img src="./images/dash.svg" />}
+              >
+                Dashboard
+              </Button>
+            </Box>
 
-            <List>
-              {[
-                { text: "Products", icon: <img src="./images/prot.svg" alt="" /> },
-                { text: "Favorites", icon: <img src="./images/fav.svg" alt="" /> },
-                { text: "Inbox", icon: <img src="./images/inbox.svg" alt=""/> },
-                { text: "Order Lists", icon: <img src="./images/list.svg" alt="" /> },
-                { text: "Product Stock", icon: <img src="./images/pro.svg" alt="" /> },
-              ].map((item, index) => (
-                <ListItem key={index}>
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-             <Divider inset />
-             <Box sx={{marginTop:"10px", ml:"10px"}}>
-             <Typography variant="p" color="#202224" sx={{opacity:'0.6' }}>Pages</Typography>
-             </Box>
-            <List>
-              {[
-                { text: "Pricing", icon: <img src="./images/pri.svg" alt="" /> },
-                { text: "Calender", icon: <img src="./images/cal.svg" alt="" /> },
-                { text: "To Do", icon: <img src="./images/todo.svg" alt="" /> },
-                { text: "Contact", icon: <img src="./images/contact.svg" alt="" /> },
-                { text: "Invoice", icon: < img src="./images/invoice.svg" alt=""/> },
-                { text: "UI Elements", icon: <img src="./images/ui.svg"  alt=""/> },
-                { text: "Team", icon: <img src="./images/team.svg"  alt=""/> },
-                { text: "Table", icon: <img src="./images/table.svg"  alt=""/> },
-              ].map((item, index) => (
-                <ListItem key={index}>
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-             <Divider inset />
-            <List>
-              {[
-                { text: "Settings", icon: <img src="./images/setting.svg" alt="" /> },
-                { text: "Logout", icon: <img src="./images/log.svg" alt="" /> },
-              ].map((item, index) => (
-                <ListItem key={index}>
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <List>
+                {[
+                  {
+                    text: "Products",
+                    icon: <img src="./images/prot.svg" alt="" />,
+                  },
+                  {
+                    text: "Favorites",
+                    icon: <img src="./images/fav.svg" alt="" />,
+                  },
+                  {
+                    text: "Inbox",
+                    icon: <img src="./images/inbox.svg" alt="" />,
+                  },
+                  {
+                    text: "Order Lists",
+                    icon: <img src="./images/list.svg" alt="" />,
+                  },
+                  {
+                    text: "Product Stock",
+                    icon: <img src="./images/pro.svg" alt="" />,
+                  },
+                ].map((item, index) => (
+                  <ListItem key={index}>
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+            <Divider inset sx={{ width: "100%" }} />
+            <Box
+              sx={{
+                display: "flex",
+                width: "50%",
+                justifyContent: "center",
+                mt: "10px",
+              }}
+            >
+              <Typography variant="p" color="#202224" sx={{ opacity: "0.6" }}>
+                Pages
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <List>
+                {[
+                  {
+                    text: "Pricing",
+                    icon: <img src="./images/pri.svg" alt="" />,
+                  },
+                  {
+                    text: "Calender",
+                    icon: <img src="./images/cal.svg" alt="" />,
+                  },
+                  {
+                    text: "To Do",
+                    icon: <img src="./images/todo.svg" alt="" />,
+                  },
+                  {
+                    text: "Contact",
+                    icon: <img src="./images/contact.svg" alt="" />,
+                  },
+                  {
+                    text: "Invoice",
+                    icon: <img src="./images/invoice.svg" alt="" />,
+                  },
+                  {
+                    text: "UI Elements",
+                    icon: <img src="./images/ui.svg" alt="" />,
+                  },
+                  {
+                    text: "Team",
+                    icon: <img src="./images/team.svg" alt="" />,
+                  },
+                  {
+                    text: "Table",
+                    icon: <img src="./images/table.svg" alt="" />,
+                  },
+                ].map((item, index) => (
+                  <ListItem key={index}>
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+            <Divider inset sx={{ width: "100%" }} />
+
+            <Box
+              sx={{
+                width: "87%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <List>
+                {[
+                  {
+                    text: "Settings",
+                    icon: <img src="./images/setting.svg" alt="" />,
+                  },
+                  {
+                    text: "Logout",
+                    icon: <img src="./images/log.svg" alt="" />,
+                  },
+                ].map((item, index) => (
+                  <ListItem key={index}>
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
           </Box>
         </Box>
       )}
