@@ -16,6 +16,7 @@ import {
   DialogTitle,
   Button,
   TablePagination,
+  Box,
 } from "@mui/material";
 import { Delete, Edit, Search } from "@mui/icons-material";
 
@@ -64,21 +65,23 @@ const Stock = () => {
   );
 
   return (
-    <Paper sx={{ padding: 3, bgcolor:"#F5F6FA"}}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+    <Box padding={3}>
+      <Box style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
         <h2>Product Stock</h2>
         <TextField
-          variant="outlined"
           placeholder="Search product name"
           onChange={handleSearch}
+          borderRadius="none"
           InputProps={{
             startAdornment: <Search sx={{ marginRight: 1, color: "gray" }} />,
           }}
           sx={{ borderRadius: "50px", width: "300px", backgroundColor: "white" }}
         />
-      </div>
+      </Box>
+
+    <Paper sx={{ }}>
       
-      <TableContainer>
+      <TableContainer borderRadius='50px'>
         <Table>
           <TableHead>
             <TableRow sx={{ backgroundColor: "#F5F5F5" }}>
@@ -159,6 +162,7 @@ const Stock = () => {
         </DialogActions>
       </Dialog>
     </Paper>
+    </Box>
   );
 };
 
