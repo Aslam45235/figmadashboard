@@ -3,6 +3,8 @@ import { Box, Stack } from '@mui/material';
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
 import ProductPage from './components/ProductPage';
+import OrderPage from './components/OrderPage';
+import ProductStock from './components/ProductStock';
 
 function App() {
   const theme = createTheme({
@@ -18,7 +20,7 @@ function App() {
       <Box>
       <Stack direction="row" justifyContent="flex-start" alignItems="stretch">
         <Sidebar />
-        <ProductPage/>
+        <ProductStock/>
       </Stack>
     </Box>
     </ThemeProvider>

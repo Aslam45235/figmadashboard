@@ -2,24 +2,17 @@ import React, { useState } from "react";
 import {
   Avatar,
   Badge,
-  Divider,
   styled,
   Typography,
   Box,
   Menu,
   MenuItem,
   InputBase,
-  InputAdornment,
   IconButton,
-  TextField,
   Select,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Search } from "@mui/icons-material";
 
 const Icons = styled("Box")(({ theme }) => ({
   display: "flex",
@@ -58,6 +51,7 @@ function Navbar() {
           bgcolor: "white",
           display: { xs: "flex", md: "flex" },
           justifyContent: { xs: "center", md: "space-between" },
+          boxSizing:"border-box"
         }}
       >
         <Box

@@ -9,21 +9,21 @@ const slides = [
     title: "Enjoy free home delivery in this summer",
     description: "Designer Dresses - Pick from trendy Designer Dress.",
     buttonText: "Get Started",
-    image: "/images/Mask.svg", // Replace with your actual image path
+    image: "/images/Mask.svg", 
   },
   {
     date: "October 1-10",
     title: "Biggest Sale of the Year!",
     description: "Exclusive discounts on all categories.",
     buttonText: "Shop Now",
-    image: "/images/Mask.svg", // Replace with your actual image path
+    image: "/images/Mask.svg", 
   },
   {
     date: "November 5-15",
     title: "Winter Collection is Here",
     description: "Find the latest winter fashion trends.",
     buttonText: "Explore",
-    image: "/images/Mask.svg", // Replace with your actual image path
+    image: "/images/Mask.svg", 
   },
 ];
 
@@ -48,7 +48,9 @@ const PromoBanner = () => {
         >
           Products
         </Typography>
-
+        <Box>
+          
+        </Box>
         <Card
           sx={{
             borderRadius: "16px",
@@ -59,9 +61,11 @@ const PromoBanner = () => {
             alignItems: "center",
             justifyContent: "flex-start",
             padding: "20px",
+            px:"0",
             backgroundImage: `url(${slides[currentSlide].image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundSize: "1920px 1080px",
+            backgroundPosition:"center",
+            backgroundRepeat:"no-repeat"
           }}
         >
           {/* Left Arrow */}
@@ -80,11 +84,11 @@ const PromoBanner = () => {
           </IconButton>
 
           {/* Content */}
-          <Box sx={{ color: "white", textAlign: "left", maxWidth: "413px", pl: "130px" }}>
+          <Box sx={{ color: "white", textAlign: "left", maxWidth: "413px", pl:{md:"130px" , xs:'70px' , sm:'100px' }}}>
             <Typography variant="body1" sx={{ fontSize: "16px", lineHeight: "30px" }}>
               {slides[currentSlide].date}
             </Typography>
-            <Typography variant="h4" sx={{ fontWeight: "bold", mt: 1 }}>
+            <Typography variant="p" sx={{ fontWeight: "700", fontSize:"37px", mt: 1 }}>
               {slides[currentSlide].title}
             </Typography>
             <Typography variant="body2" sx={{ marginTop: "8px", fontSize: "16px", lineHeight: "30px" }}>
