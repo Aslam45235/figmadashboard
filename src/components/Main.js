@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import Navbar from "./Navbar";
 import StatCard from "./StatCard";
 import SalesChart from "./SalesChart";

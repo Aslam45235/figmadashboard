@@ -12,7 +12,6 @@ import {
   Typography,
   Chip,
   Popover,
-  TablePagination,
   ButtonGroup,
 } from "@mui/material";
 import Calendar from "./Calendar";
@@ -129,146 +128,149 @@ const OrderTable = () => {
 
   return (
     <Box px={3} py={4}>
-      <Typography variant="h5" fontWeight="bold" mb={2}>
+      <Typography variant="p" fontWeight="600" sx={{ fontSize: "35px" }} mb="30px">
         Order Lists
       </Typography>
 
       {/* Filter Section */}
       <ButtonGroup
-  variant="outlined"
-  sx={{
-    mb: 3,
-    width: "100%", // Full width for responsiveness
-    maxWidth: "700px", // Limits max width
-    height: "auto",
-    borderRadius: "14px",
-    backgroundColor: "#F9F9FB",
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap", // Ensures wrapping on small screens
-    overflow: "hidden",
-    border: "1px solid #D5D5D5", // Border for ButtonGroup
-    "& .MuiButtonGroup-grouped": {
-      borderTop: "none", // Remove top border
-      borderBottom: "none", // Remove bottom border
-      borderLeft: "1px solid #D5D5D5", // Default left border
-      borderRight: "1px solid #D5D5D5", // Default right border
-      flexGrow: 1,
-      minWidth: "100px",
-      textTransform: "none",
-      fontSize: "14px", // Font size for every button
-      color: "#202224", // Text color for every button
-      fontWeight: 400,
-      "&:first-of-type": {
-        borderLeft: "none", // Remove left border for the first button
-        minWidth: "40px", // Decrease width
-        px: 1, // Reduce padding
-      },
-      "&:last-of-type": {
-        borderRight: "none", // Remove right border for the last button
-      },
-    },
-    "@media (max-width: 600px)": {
-      flexDirection: "column",
-      alignItems: "stretch",
-    },
-  }}
->
-  {/* Filter Button */}
-  <Button
-    sx={{
-      height: "70px",
-      minWidth: "40px", // Decreased width
-      px: 1, // Reduced padding
-      display: "flex",
-      justifyContent: "center",
-    }}
-  >
-    <img src="./images/filter.svg" alt="Filter" />
-  </Button>
+        variant="outlined"
+        sx={{
+          mb: 3,
+          width: "100%", // Full width for responsiveness
+          maxWidth: "700px", // Limits max width
+          height: "auto",
+          borderRadius: "14px",
+          backgroundColor: "#F9F9FB",
+          display: "flex",
+          justifyContent: "space-between",
+          flexWrap: "wrap", // Ensures wrapping on small screens
+          overflow: "hidden",
+          border: "1px solid #D5D5D5", // Border for ButtonGroup
+          "& .MuiButtonGroup-grouped": {
+            borderTop: "none", // Remove top border
+            borderBottom: "none", // Remove bottom border
+            borderLeft: "1px solid #D5D5D5", // Default left border
+            borderRight: "1px solid #D5D5D5", // Default right border
+            flexGrow: 1,
+            minWidth: "100px",
+            textTransform: "none",
+            fontSize: "14px", // Font size for every button
+            color: "#202224", // Text color for every button
+            fontWeight: 400,
+            "&:first-of-type": {
+              borderLeft: "none", // Remove left border for the first button
+              minWidth: "40px", // Decrease width
+              px: 1, // Reduce padding
+            },
+            "&:last-of-type": {
+              borderRight: "none", // Remove right border for the last button
+            },
+          },
+          "@media (max-width: 600px)": {
+            flexDirection: "column",
+            alignItems: "stretch",
+          },
+        }}
+      >
+        {/* Filter Button */}
+        <Button
+          sx={{
+            height: "70px",
+            minWidth: "40px", // Decreased width
+            px: 1, // Reduced padding
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <img src="./images/filter.svg" alt="Filter" />
+        </Button>
 
-  {/* Filter By */}
-  <Button
-    sx={{
-      height: "70px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    Filter By
-  </Button>
+        {/* Filter By */}
+        <Button
+          sx={{
+            height: "70px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Filter By
+        </Button>
 
-  {/* Date Filter with Popover */}
-  <Button
-    sx={{
-      height: "70px",
-      display: "flex",
-      justifyContent: "space-between",
-      px: 2,
-    }}
-    onClick={handleDateClick} // Opens popover
-  >
-    {selectedDate || "Date"}
-    <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
-  </Button>
+        {/* Date Filter with Popover */}
+        <Button
+          sx={{
+            height: "70px",
+            display: "flex",
+            justifyContent: "space-between",
+            px: 2,
+          }}
+          onClick={handleDateClick} // Opens popover
+        >
+          {selectedDate || "Date"}
+          <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
+        </Button>
 
-  {/* Calendar Popover */}
-  <Popover
-    open={Boolean(anchorEl)}
-    anchorEl={anchorEl}
-    onClose={handleClose}
-    anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-  >
-    <Calendar
-      onSelectDate={(date) => {
-        setSelectedDate(date);
-        handleClose();
-      }}
-    />
-  </Popover>
+        {/* Calendar Popover */}
+        <Popover
+          open={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        >
+          <Calendar
+            onSelectDate={(date) => {
+              setSelectedDate(date);
+              handleClose();
+            }}
+          />
+        </Popover>
 
-  {/* Order Type Dropdown */}
-  <Button
-    sx={{
-      height: "70px",
-      display: "flex",
-      justifyContent: "space-between",
-      px: 2,
-    }}
-  >
-    Order Type
-    <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
-  </Button>
+        {/* Order Type Dropdown */}
+        <Button
+          sx={{
+            height: "70px",
+            display: "flex",
+            justifyContent: "space-between",
+            px: 2,
+          }}
+        >
+          Order Type
+          <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
+        </Button>
 
-  {/* Order Status Dropdown */}
-  <Button
-    sx={{
-      height: "70px",
-      display: "flex",
-      justifyContent: "space-between",
-      px: 2,
-    }}
-  >
-    Order Status
-    <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
-  </Button>
+        {/* Order Status Dropdown */}
+        <Button
+          sx={{
+            height: "70px",
+            display: "flex",
+            justifyContent: "space-between",
+            px: 2,
+          }}
+        >
+          Order Status
+          <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
+        </Button>
 
-  {/* Reset Filter */}
-  <Button
-    sx={{
-      height: "70px",
-      display: "flex",
-      justifyContent: "center",
-      color: "#EA0234",
-      cursor: "pointer",
-    }}
-    onClick={() => setSelectedDate("")}
-  >
-    <img src="./images/re.svg" alt="Reset" width="16px" height="16px" />
-    Reset Filter
-  </Button>
-</ButtonGroup>
+        {/* Reset Filter */}
+        <Button
+          sx={{
+            height: "70px",
+            display: "flex",
+            justifyContent: "space-between",
+            color: "blue",
+            cursor: "pointer",
+
+          }}
+          onClick={() => setSelectedDate("")}
+        >
+          <img src="./images/re.svg" alt="Reset" width="16px" height="16px"/>
+          <span sx={{}}>
+            Reset Filter
+            </span>
+        </Button>
+      </ButtonGroup>
 
 
 
@@ -278,7 +280,7 @@ const OrderTable = () => {
         component={Paper}
         sx={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "",
           mt: 3,
           boxShadow: "0",
           borderRadius: "12px",
@@ -298,7 +300,7 @@ const OrderTable = () => {
                       color: "#202224",
                       fontWeight: "700",
                       textTransform: "uppercase",
-                      pl: header === "Status" ? "60px" : "40px", // Extra padding for "Status"
+                      pl: header === "Status" ? "70px" : "40px", // Extra padding for "Status"
                     }}
                   >
                     <b>{header}</b>
@@ -369,14 +371,14 @@ const OrderTable = () => {
                             order.status === "Completed"
                               ? "rgba(0, 182, 155, 0.2)"
                               : order.status === "Processing"
-                              ? "rgba(98, 38, 239, 0.2)"
-                              : "rgba(239, 56, 38, 0.2)",
+                                ? "rgba(98, 38, 239, 0.2)"
+                                : "rgba(239, 56, 38, 0.2)",
                           color:
                             order.status === "Completed"
                               ? "#00B69B"
                               : order.status === "Processing"
-                              ? "#6226EF"
-                              : "#EF3826",
+                                ? "#6226EF"
+                                : "#EF3826",
                           display: "flex",
                           justifyContent: "center", // Center text inside the Chip
                           alignItems: "center",

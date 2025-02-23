@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Grid, Select, MenuItem, Card } from "@mui/material";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart, CartesianGrid } from "recharts";
+import { Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart, CartesianGrid } from "recharts";
 
 const data = [
   { name: "5k", value: 30 },

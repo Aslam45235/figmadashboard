@@ -15,13 +15,12 @@ import {
   FavoriteBorder,
 } from "@mui/icons-material";
 
-// Dummy Product Data (inside the component)
 const products = [
   {
     name: "Apple Watch Series 4",
     price: "$120.00",
     rating: <img src="./images/Stars.svg" alt="star" />,
-    images: ["/images/watch.svg", "/images/watch.svg"], // Replace with actual paths
+    images: ["/images/watch.svg", "/images/watch.svg"], 
   },
   {
     name: "Apple Watch Series 4",
@@ -37,7 +36,6 @@ const products = [
   },
 ];
 
-// Individual ProductCard Component (Fixing the issue)
 const ProductCardItem = ({ product }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

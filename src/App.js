@@ -10,8 +10,8 @@ import PricingPage from "./components/PricingPage";
 import ContactPage from "./components/ContactPage";
 import LoginPage from "./components/LoginPage";
 import Signup from "./components/Signup";
-import AddContact from "./components/Contact/AddContact";
 import NotFoundPage from "./components/NotFoundPage";
+import AddCon from "./components/AddCon";
 
 const theme = createTheme({
   typography: {
@@ -46,7 +46,7 @@ function Layout() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/logout" element={<LoginPage />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/addcontact" element={<AddContact />} />
+            <Route path="/addcontact" element={<AddCon/>} />
             <Route path="/notfound" element={<NotFoundPage />} />
           </Routes>
         </Box>

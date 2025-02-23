@@ -15,13 +15,11 @@ import {
   DialogContentText,
   DialogTitle,
   Button,
-  TablePagination,
   Box,
   Divider,
-  colors,
   Typography,
 } from "@mui/material";
-import { Opacity, Search } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
