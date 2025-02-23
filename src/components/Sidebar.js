@@ -94,6 +94,7 @@ function Sidebar() {
                 {
                   text: "Products",
                   icon: <img src="./images/prot.svg" alt="" />,
+                  route: "/products",
                 },
                 {
                   text: "Favorites",
@@ -106,35 +107,26 @@ function Sidebar() {
                 {
                   text: "Order Lists",
                   icon: <img src="./images/list.svg" alt="" />,
+                  route: "/orders",
                 },
                 {
                   text: "Product Stock",
                   icon: <img src="./images/pro.svg" alt="" />,
+                  route: "/product",
                 },
               ].map((item, index) => (
-                <ListItem
-                  key={index}
-                  sx={{
-                    "&:hover": {
-                      backgroundColor: "#4880FF",
-                      color: "white",
-                      borderRadius: "12px",
-                    },
-                  }}
-                >
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText
-                      primary={item.text}
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: "14px",
-                        lineHeight: "19.1px",
-                        letterSpacing: "0.3px",
-                        margin: 0, // optional if you want to remove paragraph spacing
-                      }}
-                    />
-                  </ListItemButton>
+                <ListItem key={index} disablePadding>
+                  {item.route ? (
+                    <ListItemButton component={NavLink} to={item.route} sx={{ textDecoration: "none", color: "inherit" }}>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  ) : (
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  )}
                 </ListItem>
               ))}
             </List>
@@ -149,15 +141,20 @@ function Sidebar() {
                 {
                   text: "Pricing",
                   icon: <img src="./images/pri.svg" alt="" />,
+                  route: "/pricing",
                 },
                 {
                   text: "Calender",
                   icon: <img src="./images/cal.svg" alt="" />,
                 },
-                { text: "To Do", icon: <img src="./images/todo.svg" alt="" /> },
+                {
+                  text: "To Do",
+                  icon: <img src="./images/todo.svg" alt="" />,
+                },
                 {
                   text: "Contact",
                   icon: <img src="./images/contact.svg" alt="" />,
+                  route: "/contact",
                 },
                 {
                   text: "Invoice",
@@ -167,26 +164,27 @@ function Sidebar() {
                   text: "UI Elements",
                   icon: <img src="./images/ui.svg" alt="" />,
                 },
-                { text: "Team", icon: <img src="./images/team.svg" alt="" /> },
+                {
+                  text: "Team",
+                  icon: <img src="./images/team.svg" alt="" />,
+                },
                 {
                   text: "Table",
                   icon: <img src="./images/table.svg" alt="" />,
                 },
               ].map((item, index) => (
-                <ListItem key={index}>
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText
-                      primary={item.text}
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: "14px",
-                        lineHeight: "19.1px",
-                        letterSpacing: "0.3px",
-                        margin: 0, // optional if you want to remove paragraph spacing
-                      }}
-                    />
-                  </ListItemButton>
+                <ListItem key={index} disablePadding>
+                  {item.route ? (
+                    <ListItemButton component={NavLink} to={item.route} sx={{ textDecoration: "none", color: "inherit" }}>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  ) : (
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  )}
                 </ListItem>
               ))}
             </List>
@@ -195,24 +193,26 @@ function Sidebar() {
               {[
                 {
                   text: "Settings",
-                  icon: <img src="./images/setting.svg" alt="" />,
+                  icon: <img src="./images/setting.svg" alt="Settings" />
                 },
-                { text: "Logout", icon: <img src="./images/log.svg" alt="" /> },
+                {
+                  text: "Logout",
+                  icon: <img src="./images/log.svg" alt="Logout" />,
+                  route: "/logout", // Navigate to logout route
+                },
               ].map((item, index) => (
-                <ListItem key={index}>
-                  <ListItemButton>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText
-                      primary={item.text}
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: "14px",
-                        lineHeight: "19.1px",
-                        letterSpacing: "0.3px",
-                        margin: 0, // optional if you want to remove paragraph spacing
-                      }}
-                    />
-                  </ListItemButton>
+                <ListItem key={index} disablePadding>
+                  {item.route ? (
+                    <ListItemButton component={NavLink} to={item.route} sx={{ textDecoration: "none", color: "inherit" }}>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  ) : (
+                    <ListItemButton>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText primary={item.text} />
+                    </ListItemButton>
+                  )}
                 </ListItem>
               ))}
             </List>
@@ -251,35 +251,35 @@ function Sidebar() {
             />
           </Box>
           <Box sx={{ width: "100%" }}>
-          <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Button
-          variant="contained"
-          sx={{
-            width: "80%",
-            color: "white",
-            marginTop: "20px",
-            backgroundColor: "primary",
-            display: "flex",
-            justifyContent: "center",
-            gap: "20px",
-            lineHeight: "40px",
-            "&:hover": {
-              backgroundColor: "black",
-            },
-          }}
-          startIcon={<img src="./images/dash.svg" alt="Dashboard Icon" />}
-          onClick={handleDashboardClick} // Navigate on click
-        >
-          Dashboard
-        </Button>
-      </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                variant="contained"
+                sx={{
+                  width: "80%",
+                  color: "white",
+                  marginTop: "20px",
+                  backgroundColor: "primary",
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "20px",
+                  lineHeight: "40px",
+                  "&:hover": {
+                    backgroundColor: "black",
+                  },
+                }}
+                startIcon={<img src="./images/dash.svg" alt="Dashboard Icon" />}
+                onClick={handleDashboardClick} // Navigate on click
+              >
+                Dashboard
+              </Button>
+            </Box>
 
             <Box
               sx={{
@@ -416,33 +416,33 @@ function Sidebar() {
                 alignItems: "center",
               }}
             >
-               <List>
-      {[
-        {
-          text: "Settings",
-          icon: <img src="./images/setting.svg" alt="Settings" />
-        },
-        {
-          text: "Logout",
-          icon: <img src="./images/log.svg" alt="Logout" />,
-          route: "/logout", // Navigate to logout route
-        },
-      ].map((item, index) => (
-        <ListItem key={index} disablePadding>
-          {item.route ? (
-            <ListItemButton component={NavLink} to={item.route} sx={{ textDecoration: "none", color: "inherit" }}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          ) : (
-            <ListItemButton>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          )}
-        </ListItem>
-      ))}
-    </List>
+              <List>
+                {[
+                  {
+                    text: "Settings",
+                    icon: <img src="./images/setting.svg" alt="Settings" />
+                  },
+                  {
+                    text: "Logout",
+                    icon: <img src="./images/log.svg" alt="Logout" />,
+                    route: "/logout", // Navigate to logout route
+                  },
+                ].map((item, index) => (
+                  <ListItem key={index} disablePadding>
+                    {item.route ? (
+                      <ListItemButton component={NavLink} to={item.route} sx={{ textDecoration: "none", color: "inherit" }}>
+                        <ListItemIcon>{item.icon}</ListItemIcon>
+                        <ListItemText primary={item.text} />
+                      </ListItemButton>
+                    ) : (
+                      <ListItemButton>
+                        <ListItemIcon>{item.icon}</ListItemIcon>
+                        <ListItemText primary={item.text} />
+                      </ListItemButton>
+                    )}
+                  </ListItem>
+                ))}
+              </List>
             </Box>
           </Box>
         </Box>

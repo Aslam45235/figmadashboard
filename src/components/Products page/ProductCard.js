@@ -69,10 +69,10 @@ const ProductCardItem = ({ product }) => {
             image={product.images[currentImageIndex]}
             alt={product.name}
             sx={{
-              height: "auto", // Increased from 200px to 300px
-              width: "100%", // Ensures it covers the card width
-              objectFit: "cover", // Better scaling for images
-              backgroundColor: "#e0e0e0", // Slightly darker background for contrast
+              height: "auto",
+              width: "100%", 
+              objectFit: "cover", 
+              backgroundColor: "#e0e0e0", 
             }}
           />
           {/* Left Arrow */}
