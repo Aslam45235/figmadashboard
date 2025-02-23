@@ -52,6 +52,7 @@ function Navbar() {
           display: { xs: "flex", md: "flex" },
           justifyContent: { xs: "center", md: "space-between" },
           boxSizing:"border-box"
+          
         }}
       >
         <Box

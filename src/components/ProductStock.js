@@ -11,7 +11,7 @@ function ProductStock() {
     <>
       <Box flex={6} bgcolor="#ECF0EF">
         <Navbar />
-        <Stock/>
+        <Stock />
       </Box>
     </>
   );

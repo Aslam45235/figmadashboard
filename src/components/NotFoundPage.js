@@ -1,7 +1,14 @@
 import React from "react";
 import { Card, Typography, Button, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const NotFoundPage = () => {
+
+  const navigate = useNavigate(); // Initialize navigation
+
+  const handleDashboardClick = () => {
+    navigate("/"); // Navigate to Main Page
+  };
   return (
     <Box
       sx={{
@@ -73,7 +80,7 @@ const NotFoundPage = () => {
               width: "100%",
               maxWidth: "418px",
             }}
-            onClick={() => (window.location.href = "/dashboard")}
+            onClick={handleDashboardClick}
           >
             Back to Dashboard
           </Button>

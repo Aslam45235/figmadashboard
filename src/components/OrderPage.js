@@ -8,9 +8,12 @@ import OrderTable from "./OrderTable/OrderTable";
 function OrderPage() {
   return (
     <>
-      <Box flex={6} bgcolor="#ECF0EF">
+      <Box flex={6} bgcolor="#ECF0EF" p="0">
         <Navbar />
-        <OrderTable/>
+        <Box width='100%'>
+        <OrderTable />
+
+        </Box>
       </Box>
     </>
   );

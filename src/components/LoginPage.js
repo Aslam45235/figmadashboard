@@ -8,8 +8,15 @@ import {
   FormControlLabel,
   Link,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+
+  const navigate = useNavigate(); // Initialize navigation
+
+  const handleDashboardClick = () => {
+    navigate("/notfound"); // Navigate to Main Page
+  };
   return (
     <>
       <Box
@@ -169,6 +176,7 @@ const LoginPage = () => {
                   textTransform: "none",
                   width:{md:"350px" , sm:"300px", xs:"250"},
                 }}
+                onClick={handleDashboardClick}
               >
                 Sign In
               </Button>
@@ -182,7 +190,7 @@ const LoginPage = () => {
               >
                 Don’t have an account?{" "}
                 <Link
-                  href="#"
+                  href="/signup"
                   sx={{ textDecoration: "none", color: "#1A73E8" }}
                 >
                   Create Account

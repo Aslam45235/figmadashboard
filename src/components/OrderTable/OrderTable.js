@@ -16,6 +16,8 @@ import {
   ButtonGroup,
 } from "@mui/material";
 import Calendar from "./Calendar";
+import { IconButton, Divider } from "@mui/material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 // Dummy Order Data
 const orders = [
@@ -133,107 +135,154 @@ const OrderTable = () => {
 
       {/* Filter Section */}
       <ButtonGroup
-      variant="outlined"
-      sx={{
-        mb: 3,
-        width: "100%", // Full width for responsiveness
-        maxWidth: "700px", // Limits max width
-        height: "auto",
-        borderRadius: "14px",
-        backgroundColor: "#F9F9FB",
-        display: "flex",
-        justifyContent: "space-between",
-        flexWrap: "wrap", // Ensures wrapping on small screens
-        overflow: "hidden",
-        borderTop: "1px solid #D5D5D5", // Double border
-        borderBottom: "1px solid #D5D5D5", // Double border
-        "& .MuiButtonGroup-grouped": {
-          borderColor: "#D5D5D5",
-          flexGrow: 1,
-          minWidth: "100px",
-          textTransform: "none",
-          fontFamily: "Nunito Sans, sans-serif",
-          fontSize: "14px",
-          lineHeight: "19.1px",
-          letterSpacing: "0px",
-          fontWeight: 400,
-        },
-        "@media (max-width: 600px)": {
-          flexDirection: "column",
-          alignItems: "stretch",
-        },
+  variant="outlined"
+  sx={{
+    mb: 3,
+    width: "100%", // Full width for responsiveness
+    maxWidth: "700px", // Limits max width
+    height: "auto",
+    borderRadius: "14px",
+    backgroundColor: "#F9F9FB",
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap", // Ensures wrapping on small screens
+    overflow: "hidden",
+    border: "1px solid #D5D5D5", // Border for ButtonGroup
+    "& .MuiButtonGroup-grouped": {
+      borderTop: "none", // Remove top border
+      borderBottom: "none", // Remove bottom border
+      borderLeft: "1px solid #D5D5D5", // Default left border
+      borderRight: "1px solid #D5D5D5", // Default right border
+      flexGrow: 1,
+      minWidth: "100px",
+      textTransform: "none",
+      fontSize: "14px", // Font size for every button
+      color: "#202224", // Text color for every button
+      fontWeight: 400,
+      "&:first-of-type": {
+        borderLeft: "none", // Remove left border for the first button
+        minWidth: "40px", // Decrease width
+        px: 1, // Reduce padding
+      },
+      "&:last-of-type": {
+        borderRight: "none", // Remove right border for the last button
+      },
+    },
+    "@media (max-width: 600px)": {
+      flexDirection: "column",
+      alignItems: "stretch",
+    },
+  }}
+>
+  {/* Filter Button */}
+  <Button
+    sx={{
+      height: "70px",
+      minWidth: "40px", // Decreased width
+      px: 1, // Reduced padding
+      display: "flex",
+      justifyContent: "center",
+    }}
+  >
+    <img src="./images/filter.svg" alt="Filter" />
+  </Button>
+
+  {/* Filter By */}
+  <Button
+    sx={{
+      height: "70px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    Filter By
+  </Button>
+
+  {/* Date Filter with Popover */}
+  <Button
+    sx={{
+      height: "70px",
+      display: "flex",
+      justifyContent: "space-between",
+      px: 2,
+    }}
+    onClick={handleDateClick} // Opens popover
+  >
+    {selectedDate || "Date"}
+    <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
+  </Button>
+
+  {/* Calendar Popover */}
+  <Popover
+    open={Boolean(anchorEl)}
+    anchorEl={anchorEl}
+    onClose={handleClose}
+    anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+  >
+    <Calendar
+      onSelectDate={(date) => {
+        setSelectedDate(date);
+        handleClose();
       }}
-    >
-      {/* Filter Button */}
-      <Button sx={{ height: "70px", minWidth: "50px", px: 2, display: "flex", justifyContent: "center" }}>
-        <img src="./images/filter.svg" alt="Filter" />
-      </Button>
+    />
+  </Popover>
 
-      {/* Filter By */}
-      <Button sx={{ height: "70px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        Filter By
-      </Button>
+  {/* Order Type Dropdown */}
+  <Button
+    sx={{
+      height: "70px",
+      display: "flex",
+      justifyContent: "space-between",
+      px: 2,
+    }}
+  >
+    Order Type
+    <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
+  </Button>
 
-      {/* Date Filter with Popover */}
-      <Button
-        sx={{
-          height: "70px",
-          display: "flex",
-          justifyContent: "space-between",
-          px: 2,
-        }}
-        onClick={handleDateClick} // Opens popover
-      >
-        {selectedDate || "Date"}
-        <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
-      </Button>
+  {/* Order Status Dropdown */}
+  <Button
+    sx={{
+      height: "70px",
+      display: "flex",
+      justifyContent: "space-between",
+      px: 2,
+    }}
+  >
+    Order Status
+    <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
+  </Button>
 
-      {/* Calendar Popover */}
-      <Popover
-        open={Boolean(anchorEl)}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-      >
-        <Calendar
-          onSelectDate={(date) => {
-            setSelectedDate(date);
-            handleClose();
-          }}
-        />
-      </Popover>
+  {/* Reset Filter */}
+  <Button
+    sx={{
+      height: "70px",
+      display: "flex",
+      justifyContent: "center",
+      color: "#EA0234",
+      cursor: "pointer",
+    }}
+    onClick={() => setSelectedDate("")}
+  >
+    <img src="./images/re.svg" alt="Reset" width="16px" height="16px" />
+    Reset Filter
+  </Button>
+</ButtonGroup>
 
-      {/* Order Type Dropdown */}
-      <Button sx={{ height: "70px", display: "flex", justifyContent: "space-between", px: 2 }}>
-        Order Type
-        <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
-      </Button>
 
-      {/* Order Status Dropdown */}
-      <Button sx={{ height: "70px", display: "flex", justifyContent: "space-between", px: 2 }}>
-        Order Status
-        <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
-      </Button>
 
-      {/* Reset Filter */}
-      <Button
-        sx={{
-          height: "70px",
-          display: "flex",
-          justifyContent: "center",
-          color: "#EA0234",
-          cursor: "pointer",
-        }}
-        onClick={() => setSelectedDate("")}
-      >
-        <img src="./images/re.svg" alt="Reset" width="16px" height="16px" />
-        Reset Filter
-      </Button>
-    </ButtonGroup>
+
 
       <TableContainer
         component={Paper}
-        sx={{ display: "flex", justifyContent: "center", mt: 3, boxShadow:"0", borderRadius:'12px'}} // Center the table inside its container
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: 3,
+          boxShadow: "0",
+          borderRadius: "12px",
+        }} // Center the table inside its container
       >
         <Table>
           <TableHead>
@@ -249,7 +298,7 @@ const OrderTable = () => {
                       color: "#202224",
                       fontWeight: "700",
                       textTransform: "uppercase",
-                      textAlign: "center", // Center header text
+                      pl: header === "Status" ? "60px" : "40px", // Extra padding for "Status"
                     }}
                   >
                     <b>{header}</b>
@@ -258,14 +307,12 @@ const OrderTable = () => {
               )}
             </TableRow>
           </TableHead>
+
           <TableBody>
             {filteredOrders
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((order) => (
-                <TableRow
-                  key={order.id}
-                  sx={{  }}
-                >
+                <TableRow key={order.id} sx={{}}>
                   {[
                     order.id,
                     order.name,
@@ -282,7 +329,7 @@ const OrderTable = () => {
                         color: "#202224",
                         fontWeight: "500",
                         textTransform: "uppercase",
-                        textAlign: "center", // Center table data
+                        pl: "40px", // Center table data
                       }}
                     >
                       {value}
@@ -291,56 +338,53 @@ const OrderTable = () => {
 
                   {/* Status Column with Centered Chip */}
                   <TableCell
-  sx={{
-    py: 3,
-    px: 2,
-    fontSize: "14px",
-    color: "#202224",
-    fontWeight: "500",
-    textTransform: "uppercase",
-    textAlign: "center",
-    borderBottom: "1px solid #D5D5D5", // Ensures same border as other cells
-    height: "50px", // Matches other cells for perfect row alignment
-  }}
->
-  <Box
-    sx={{
-      display: "flex",
-      justifyContent: "center", // Center horizontally
-      alignItems: "center", // Center vertically
-    }}
-  >
-    <Chip
-      label={order.status}
-      sx={{
-        width: "100px",
-        height: "32px",
-        borderRadius: "4.5px",
-        fontSize: "12px",
-        fontWeight: "500",
-        backgroundColor:
-          order.status === "Completed"
-            ? "rgba(0, 182, 155, 0.2)"
-            : order.status === "Processing"
-            ? "rgba(98, 38, 239, 0.2)"
-            : "rgba(239, 56, 38, 0.2)",
-        color:
-          order.status === "Completed"
-            ? "#00B69B"
-            : order.status === "Processing"
-            ? "#6226EF"
-            : "#EF3826",
-        display: "flex",
-        justifyContent: "center", // Center text inside the Chip
-        alignItems: "center",
-        textAlign: "center",
-      }}
-    />
-  </Box>
-</TableCell>
-
-
-
+                    sx={{
+                      py: 3,
+                      px: 2,
+                      fontSize: "14px",
+                      color: "#202224",
+                      fontWeight: "500",
+                      textTransform: "uppercase",
+                      textAlign: "center",
+                      borderBottom: "1px solid #D5D5D5", // Ensures same border as other cells
+                      height: "50px", // Matches other cells for perfect row alignment
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center", // Center horizontally
+                        alignItems: "center", // Center vertically
+                      }}
+                    >
+                      <Chip
+                        label={order.status}
+                        sx={{
+                          width: "100px",
+                          height: "32px",
+                          borderRadius: "4.5px",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          backgroundColor:
+                            order.status === "Completed"
+                              ? "rgba(0, 182, 155, 0.2)"
+                              : order.status === "Processing"
+                              ? "rgba(98, 38, 239, 0.2)"
+                              : "rgba(239, 56, 38, 0.2)",
+                          color:
+                            order.status === "Completed"
+                              ? "#00B69B"
+                              : order.status === "Processing"
+                              ? "#6226EF"
+                              : "#EF3826",
+                          display: "flex",
+                          justifyContent: "center", // Center text inside the Chip
+                          alignItems: "center",
+                          textAlign: "center",
+                        }}
+                      />
+                    </Box>
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>
@@ -348,60 +392,72 @@ const OrderTable = () => {
       </TableContainer>
 
       {/* Pagination Component */}
+
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          mt: 3,
+          padding: "10px",
+          marginTop: "32px",
         }}
       >
-        {/* Left: Showing "1–9 of 10" */}
-        <Typography variant="body2" sx={{ ml: 2 }}>
-          Showing{" "}
-          {`${page * rowsPerPage + 1}–${Math.min(
-            (page + 1) * rowsPerPage,
-            filteredOrders.length
-          )} of ${filteredOrders.length}`}
-        </Typography>
+        {/* Pagination Text (Left Side) */}
+        <Box style={{ color: "#202224", opacity: 0.6 }}>
+          Showing {page * rowsPerPage + 1} -{" "}
+          {Math.min((page + 1) * rowsPerPage, filteredOrders.length)} of{" "}
+          {filteredOrders.length}
+        </Box>
 
-        {/* Order Table with Pagination */}
+        {/* Navigation Buttons (Right Side) */}
+        <Box
+          sx={{
+            display: "flex",
+            gap: "5px",
+            backgroundColor: "#FAFBFD",
+            borderRadius: "12px",
+            border: "1px solid #D5D5D5",
+            height: "30px",
+          }}
+        >
+          {/* Custom Previous Button */}
+          <IconButton
+            onClick={(e) => handleChangePage(e, page - 1)}
+            disabled={page === 0}
+          >
+            <ChevronLeft
+              sx={{ fontSize: "24px", color: page === 0 ? "gray" : "black" }}
+            />
+          </IconButton>
 
-        {/* Right: Only forward & backward buttons with customized icons */}
-        <TablePagination
-  rowsPerPageOptions={[]} // Hide rows per page options
-  component="div"
-  count={filteredOrders.length}
-  rowsPerPage={rowsPerPage}
-  page={page}
-  onPageChange={handleChangePage}
-  labelDisplayedRows={() => ""} // Hides page number text
-  slotProps={{
-    actions: {
-      sx: {
-        marginLeft: "auto",
-        "& button": {
-          backgroundColor: "#979797", // Background color
-          borderRadius: "6px", // Rounded edges
-          color: "#FFFFFF", // Text color
-          width: "36px", // Square button
-          height: "36px", // Square button
-          "&:hover": {
-            backgroundColor: "#7a7a7a", // Darker hover effect
-          },
-          "&.Mui-disabled": {
-            backgroundColor: "#D3D3D3", // Disabled button color
-            color: "#B0B0B0",
-          },
-        },
-      },
-    },
-  }}
-/>
+          <Divider
+            orientation="vertical"
+            flexItem
+            sx={{
+              backgroundColor: "#E0E0E0",
+              height: "auto",
+              margin: "0 5px",
+            }}
+          />
 
-
-
-
+          {/* Custom Next Button */}
+          <IconButton
+            onClick={(e) => handleChangePage(e, page + 1)}
+            disabled={
+              page >= Math.ceil(filteredOrders.length / rowsPerPage) - 1
+            }
+          >
+            <ChevronRight
+              sx={{
+                fontSize: "24px",
+                color:
+                  page >= Math.ceil(filteredOrders.length / rowsPerPage) - 1
+                    ? "gray"
+                    : "black",
+              }}
+            />
+          </IconButton>
+        </Box>
       </Box>
     </Box>
   );
