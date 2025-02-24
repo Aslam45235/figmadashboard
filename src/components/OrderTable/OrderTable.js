@@ -128,9 +128,11 @@ const OrderTable = () => {
 
   return (
     <Box px={3} py={4}>
-      <Typography variant="p" fontWeight="600" sx={{ fontSize: "35px" }} mb="30px">
-        Order Lists
-      </Typography>
+      <Box mb="30px">
+        <Typography variant="p" fontWeight="600" sx={{ fontSize: "35px" }}>
+          Order Lists
+        </Typography>
+      </Box>
 
       {/* Filter Section */}
       <ButtonGroup
@@ -181,6 +183,7 @@ const OrderTable = () => {
             px: 1, // Reduced padding
             display: "flex",
             justifyContent: "center",
+            fontWeight: "600",
           }}
         >
           <img src="./images/filter.svg" alt="Filter" />
@@ -195,22 +198,32 @@ const OrderTable = () => {
             justifyContent: "center",
           }}
         >
-          Filter By
+          <Typography sx={{ color: "#202224", fontWeight: "600" }}>
+            Filter By
+          </Typography>
         </Button>
 
         {/* Date Filter with Popover */}
         <Button
-          sx={{
-            height: "70px",
-            display: "flex",
-            justifyContent: "space-between",
-            px: 2,
-          }}
-          onClick={handleDateClick} // Opens popover
-        >
-          {selectedDate || "Date"}
-          <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
-        </Button>
+  sx={{
+    height: "70px",
+    display: "flex",
+    justifyContent: "space-between",
+    fontWeight: "600", // Ensure font weight is applied
+    px: 2,
+    typography: "body1", // Ensures text styling is applied correctly
+  }}
+  onClick={handleDateClick} // Opens popover
+>
+  <Typography sx={{ fontWeight: "600" }}>{selectedDate || "Date"}</Typography>
+  <img
+    src="./images/arr.svg"
+    alt="Dropdown"
+    width="16px"
+    height="16px"
+  />
+</Button>
+
 
         {/* Calendar Popover */}
         <Popover
@@ -233,11 +246,20 @@ const OrderTable = () => {
             height: "70px",
             display: "flex",
             justifyContent: "space-between",
+            fontWeight: "600",
             px: 2,
           }}
         >
-          Order Type
-          <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
+          <Typography sx={{ color: "#202224", fontWeight: "600" }}>
+            Order Type
+          </Typography>
+
+          <img
+            src="./images/arr.svg"
+            alt="Dropdown"
+            width="16px"
+            height="16px"
+          />
         </Button>
 
         {/* Order Status Dropdown */}
@@ -246,11 +268,20 @@ const OrderTable = () => {
             height: "70px",
             display: "flex",
             justifyContent: "space-between",
+            fontWeight: "600",
             px: 2,
           }}
         >
-          Order Status
-          <img src="./images/arr.svg" alt="Dropdown" width="16px" height="16px" />
+          <Typography sx={{ color: "#202224", fontWeight: "600" }}>
+            Order Status
+          </Typography>
+
+          <img
+            src="./images/arr.svg"
+            alt="Dropdown"
+            width="16px"
+            height="16px"
+          />
         </Button>
 
         {/* Reset Filter */}
@@ -259,22 +290,18 @@ const OrderTable = () => {
             height: "70px",
             display: "flex",
             justifyContent: "space-between",
-            color: "blue",
+            color: "#EA0234",
             cursor: "pointer",
-
+            fontWeight: "600", // Ensures Button text has font-weight
           }}
           onClick={() => setSelectedDate("")}
         >
-          <img src="./images/re.svg" alt="Reset" width="16px" height="16px"/>
-          <span sx={{}}>
+          <img src="./images/re.svg" alt="Reset" width="16px" height="16px" />
+          <Typography sx={{ color: "#EA0234", fontWeight: "600" }}>
             Reset Filter
-            </span>
+          </Typography>
         </Button>
       </ButtonGroup>
-
-
-
-
 
       <TableContainer
         component={Paper}
@@ -371,14 +398,14 @@ const OrderTable = () => {
                             order.status === "Completed"
                               ? "rgba(0, 182, 155, 0.2)"
                               : order.status === "Processing"
-                                ? "rgba(98, 38, 239, 0.2)"
-                                : "rgba(239, 56, 38, 0.2)",
+                              ? "rgba(98, 38, 239, 0.2)"
+                              : "rgba(239, 56, 38, 0.2)",
                           color:
                             order.status === "Completed"
                               ? "#00B69B"
                               : order.status === "Processing"
-                                ? "#6226EF"
-                                : "#EF3826",
+                              ? "#6226EF"
+                              : "#EF3826",
                           display: "flex",
                           justifyContent: "center", // Center text inside the Chip
                           alignItems: "center",

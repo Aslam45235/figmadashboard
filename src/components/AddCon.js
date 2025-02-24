@@ -7,9 +7,7 @@ function AddCon() {
     <>
       <Box flex={6} bgcolor="#ECF0EF" p="0">
         <Navbar />
-        <Box width='100%'>
         <AddContact/>
-        </Box>
       </Box>
     </>
   );
