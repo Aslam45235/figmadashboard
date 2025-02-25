@@ -20,7 +20,7 @@ const Pricing = () => {
         >
           Pricing
         </Typography>
-        <Grid container spacing={4} justifyContent="center" sx={{ mt: 2 }}>
+        <Grid container spacing={4} justifyContent="center" sx={{ mt: 2, }} >
           {[
             { title: "Basic", price: "$14.99", buttonColor: "primary" },
             { title: "Standard", price: "$49.99", buttonColor: "primary" },
@@ -31,8 +31,12 @@ const Pricing = () => {
                 sx={{
                   textAlign: "center",
                   borderRadius: "12px",
-                  p: "40px",
                   boxShadow: 3,
+                  padding:"40px",
+                  backgroundImage: "url('/images/Bg.svg')", // Correct way to set background
+                  backgroundSize: "720px", // Ensures it covers the card properly
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
                 }}
               >
                 <CardContent>

@@ -205,25 +205,26 @@ const OrderTable = () => {
 
         {/* Date Filter with Popover */}
         <Button
-  sx={{
-    height: "70px",
-    display: "flex",
-    justifyContent: "space-between",
-    fontWeight: "600", // Ensure font weight is applied
-    px: 2,
-    typography: "body1", // Ensures text styling is applied correctly
-  }}
-  onClick={handleDateClick} // Opens popover
->
-  <Typography sx={{ fontWeight: "600" }}>{selectedDate || "Date"}</Typography>
-  <img
-    src="./images/arr.svg"
-    alt="Dropdown"
-    width="16px"
-    height="16px"
-  />
-</Button>
-
+          sx={{
+            height: "70px",
+            display: "flex",
+            justifyContent: "space-between",
+            fontWeight: "600", // Ensure font weight is applied
+            px: 2,
+            typography: "body1", // Ensures text styling is applied correctly
+          }}
+          onClick={handleDateClick} // Opens popover
+        >
+          <Typography sx={{ fontWeight: "600" }}>
+            {selectedDate || "Date"}
+          </Typography>
+          <img
+            src="./images/arr.svg"
+            alt="Dropdown"
+            width="16px"
+            height="16px"
+          />
+        </Button>
 
         {/* Calendar Popover */}
         <Popover
